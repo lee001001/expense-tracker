@@ -17,7 +17,7 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
-  totalAmount: {
+  icon: {
     type: String,
     required: true
   }
