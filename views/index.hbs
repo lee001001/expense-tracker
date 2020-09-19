@@ -8,14 +8,15 @@
   <a class="btn btn-outline-success" href="/entries/new">新增支出</a>
   <form method="GET" action="/filter">
     <div class="filter-category">
-      <select class="form-contol" name="category">
+      <select class="form-contol" name="category" onchange="submit()">
         <option disabled selected> 支出類別</option>
         {{#each category}}
-        <option value="{{this.category}}">
-          {{this}}
+        <option value="{{this.name}}">
+          {{this.name}}
         </option>
         {{/each}}
       </select>
+
     </div>
   </form>
 </div>
@@ -25,14 +26,14 @@
   <li class="list-group-item">
     <div class="row">
       <div class="row col-10 mr-auto ">
-        <span class="col-1 align-items-center" style="font-size: 16px"><i class="null"></i></span>
+        <span class="col-1 align-items-center" style="font-size: 16px"><i class="{{this.tag}}"></i></span>
         <div class="col-11 d-flex ml-0 align-items-center justify-content-between ">
           <h3>{{this.name}}</h3>
-          <h3>60</h3>
+          <h3>{{this.amount}}</h3>
         </div>
         <br>
         <span class="col-1"></span>
-        <span class="col-3">2019/04/23</span>
+        <span class="col-3">{{this.date}}</span>
       </div>
       <div class="col-auto mr-auto">
         <a class="btn btn-success" href="./entries/edit">修改</a>

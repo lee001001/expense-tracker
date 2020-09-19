@@ -46,6 +46,7 @@ db.once('open', () => {
       date: '2019-04-23',
       amount: '780',
       tag: 'fas fa-grin-beam'
+
     }
   )
   console.log('done.')
