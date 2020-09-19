@@ -10,34 +10,35 @@
     <div class="filter-category">
       <select class="form-contol" name="category">
         <option disabled selected> 支出類別</option>
-        <option value="category">
-          selected
+        {{#each category}}
+        <option value="{{this.category}}">
+          {{this}}
         </option>
-        <option value="category">
-          selected
-        </option>
+        {{/each}}
       </select>
     </div>
   </form>
 </div>
 
 <ul class="list-group list-group-flush">
+  {{#each records}}
   <li class="list-group-item">
     <div class="row">
       <div class="row col-10 mr-auto ">
-        <span class="col-1 align-items-center" style="font-size: 16px"><i class="{{this.icon}}"></i></span>
+        <span class="col-1 align-items-center" style="font-size: 16px"><i class="null"></i></span>
         <div class="col-11 d-flex ml-0 align-items-center justify-content-between ">
-          <h3>午餐</h3>
+          <h3>{{this.name}}</h3>
           <h3>60</h3>
         </div>
         <br>
         <span class="col-1"></span>
         <span class="col-3">2019/04/23</span>
       </div>
-      <div class="col-auto">
+      <div class="col-auto mr-auto">
         <a class="btn btn-success" href="./entries/edit">修改</a>
         <a class="btn btn-success" href="./entries/edit">修刪除</a>
       </div>
     </div>
   </li>
+  {{/each}}
 </ul>
