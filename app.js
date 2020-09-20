@@ -2,26 +2,25 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const app = express()
+const bodyParser = require('body-parser')
 const port = 3000
 
 const Record = require('./models/record')
 const Category = require('./models/category')
 
 require('./config/mongoose')
+const routes = require('./routes')
 
 const methodOverride = require('method-override')
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
-app.use(methodOverride('_method'))
+app.use(bodyParser.urlencoded({ extended: true }))
 
-// 設定首頁路由
-app.get('/', (req, res) => {
-  Record.find()
-    .lean()
-    .then(records => res.render('index', { records, Category }))
-})
+app.use(methodOverride('_method'))
+app.use(routes)
+
 
 // 設定 port 3000
 app.listen(port, () => {

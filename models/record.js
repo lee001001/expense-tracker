@@ -18,7 +18,7 @@ const recordSchema = new Schema({
     type: String,
     required: false
   },
-  tag: {
+  icon: {
     type: String,
     required: false
   }

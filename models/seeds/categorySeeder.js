@@ -7,24 +7,24 @@ db.on('error', () => {
 db.once('open', () => {
   Category.create(
     {
-      name: '家居物業',
-      tag: 'fas fa-home'
+      category: '家居物業',
+      icon: '<i class="fas fa-home"></i>'
     },
     {
-      name: '交通出行',
-      tag: 'fas fa-shuttle-van'
+      category: '交通出行',
+      icon: '<i class="fas fa-shuttle-van"></i>'
     },
     {
-      name: '休閒娛樂',
-      tag: 'fas fa-grin-beam'
+      category: '休閒娛樂',
+      icon: '<i class="fas fa-grin-beam"></i>'
     },
     {
-      name: '餐飲食品',
-      tag: 'fas fa-utensils'
+      category: '餐飲食品',
+      icon: '<i class="fas fa-utensils"></i>'
     },
     {
-      name: '其他',
-      tag: 'fas fa-pen'
+      category: '其他',
+      icon: '<i class="fas fa-pen"></i>'
     }
   )
   console.log('done.')
