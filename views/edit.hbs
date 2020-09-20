@@ -1,0 +1,99 @@
+<div class="container mb-5">
+
+  <div class="row mt-4 mb-4">
+    <div class="col-md-10 mx-auto">
+      <h2 class="mt-2 mb-2 font-weight-bold text-center">修改支出</h2>
+      <a type="button" href="/" class="btn btn-warning btn-sm mt-3 "><i class="fas fa-arrow-alt-circle-left"></i>
+        Back</a>
+    </div>
+  </div>
+
+  <form action="/records/{{records._id}}?_method=PUT" method="POST" class="row mb-5">
+
+    <div class=" col-12 col-md-10 mx-auto p-5 shadow-lg">
+
+      <div class="row ml-1 mb-1 text-muted">
+        <label for="validationServer01 ">
+          <span class="tip text-secondary font-weight-bold ">*</span>
+          為必填　未填寫將自動填入預設值</label>
+      </div>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">名稱<span class="tip text-secondary font-weight-bold">
+            *</span></label>
+        <div class="col-sm-10">
+          <input type="text" aria-label="First name" class="form-control" placeholder="輸入開銷名稱" spellcheck="false"
+            name="name" value="{{records.name}}">
+        </div>
+      </div>
+      <!--類別 -->
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">類別<span class="tip text-secondary font-weight-bold">
+            *</span></label>
+        <div class="col-sm-10">
+          <select name="categories" value="" class="custom-select form-control" id="inputGroupSelect01" required>
+            <option disabled selected>Select</option>
+            <option value='家居物業|"<i class=fas fa-home"></i>' {{#eq records.category "家居物業"}}selected{{/eq}}>家居物業
+            </option>
+            <option value='交通出行|<i class="fas fa-shuttle-van"></i>' {{#eq records.category "交通出行"}}selected{{/eq}}>交通出行
+            </option>
+            <option value='休閒娛樂|<i class="fas fa-grin-beam"></i>' {{#eq records.category "休閒娛樂"}}selected{{/eq}}>休閒娛樂
+            </option>
+            <option value='餐飲食品|<i class="fas fa-utensils"></i>' {{#eq records.category "餐飲食品"}}selected{{/eq}}>餐飲食品
+            </option>
+            <option value='其他|<i class="fas fa-pen"></i>' {{#eq records.category "其他"}}selected{{/eq}}>其他</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">日期<span class="tip text-secondary font-weight-bold">
+            *</span></label>
+        <div class="col-sm-10">
+          <input class="form-control" type="date" placeholder="" id="date" name="date" value="{{records.date}}"
+            required>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">金額<span class="tip text-secondary font-weight-bold">
+            *</span></label>
+        <div class="col-sm-10">
+          <input id="dateSelecter" type="text" aria-label="First name" class="form-control" placeholder="輸入開銷金額"
+            spellcheck="false" name="amount" oninput="value=value.replace(/[^\d]/g,'')" value="{{records.amount}}"
+            min="1">
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-secondary btn-lg btn-block shadow" data-toggle="modal"
+            data-target="#ModalNew"><i class="far fa-plus-square"></i> 送出</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal fade" id="ModalNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">送出確認</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            您確定要修改該筆資訊嗎?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-secondary">確認修改</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</div>

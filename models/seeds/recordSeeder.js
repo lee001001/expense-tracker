@@ -1,10 +1,15 @@
 const Record = require('../record')
 const db = require('../../config/mongoose')
+
 db.on('error', () => {
   console.log('mongoDB error！')
 })
+
 db.once('open', () => {
-  Record.create(
+  console.log('Mongodb connected recordSeeder!')
+
+  const promise = []
+  promise.push(Record.create(
     {
       name: '火鍋',
       category: '餐飲食品',
@@ -48,6 +53,8 @@ db.once('open', () => {
       icon: '<i class="fas fa-pen"></i>'
 
     }
-  )
-  console.log('done.')
+  ))
+  promise.all(promise).then(() => {
+    db.close()
+  })
 })

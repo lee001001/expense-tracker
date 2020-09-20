@@ -5,22 +5,17 @@ const app = express()
 const bodyParser = require('body-parser')
 const port = 3000
 
-const Record = require('./models/record')
-const Category = require('./models/category')
-
-require('./config/mongoose')
 const routes = require('./routes')
-
+require('./config/mongoose')
 const methodOverride = require('method-override')
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
-
 app.use(methodOverride('_method'))
-app.use(routes)
 
+app.use(routes)
 
 // 設定 port 3000
 app.listen(port, () => {
