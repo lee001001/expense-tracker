@@ -18,7 +18,7 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
   // 接收 name category data amount 的參數
   const { name, date, category, amount } = req.body
-  let categoryArry = category.split(',')
+  const categoryArry = category.split(',')
   Record.create({
     name,
     date,
@@ -28,6 +28,44 @@ router.post('/', (req, res) => {
   })
     .then(() => res.redirect('/'))
     .catch(error => console.error(error))
+})
+
+// ---- Updata Funcation------
+router.get('/:id/edit', (req, res) => {
+  const id = req.params.id
+  Record.findById(id)
+    .lean()
+    .then(records => {
+      const selectedCategory = records.category
+      Category.find()
+        .lean()
+        .sort({ _id: 'asc' })
+        .then(category => {
+          const filterCategory = category.filter(e => e.name !== selectedCategory)
+          res.render('edit', { records, category: filterCategory })
+        })
+        .catch(error => console.log(error))
+    })
+    .catch(error => console.log(error))
+})
+
+router.put('/:id', (req, res) => {
+  const id = req.params.id
+  Record.findById(id)
+    .then(records => {
+      const { name, date, amount, category } = req.body
+      const categoryArry = category.split(',')
+      const data = {
+        name,
+        date,
+        amount,
+        category: categoryArry[0],
+        icon: categoryArry[1]
+      }
+      Object.assign(records, data)
+      return records.save()
+    })
+    .then(() => res.redirect('/'))
 })
 
 // Delete
