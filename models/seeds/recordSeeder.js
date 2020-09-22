@@ -7,9 +7,7 @@ db.on('error', () => {
 
 db.once('open', () => {
   console.log('Mongodb connected recordSeeder!')
-
-  const promise = []
-  promise.push(Record.create(
+  Record.create(
     {
       name: '火鍋',
       category: '餐飲食品',
@@ -53,8 +51,5 @@ db.once('open', () => {
       icon: '<i class="fas fa-pen"></i>'
 
     }
-  ))
-  promise.all(promise).then(() => {
-    db.close()
-  })
+  )
 })
