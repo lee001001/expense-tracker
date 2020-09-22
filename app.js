@@ -3,7 +3,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const app = express()
 const bodyParser = require('body-parser')
-const port = 3000
+const PORT = process.env.PORT || 3000
 
 const routes = require('./routes')
 require('./config/mongoose')

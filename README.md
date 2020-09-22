@@ -31,7 +31,7 @@ add expense-tracker
 ### Activate Project
 1. Clone this git to local
 ```
-[~] $ git clone 
+[~] $ git clone https://github.com/lee001001/expense-tracker.git
 ```
 
 2. Get into the directory
